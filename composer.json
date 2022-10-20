@@ -1,5 +1,5 @@
 {
-    "name": "k911/swoole-bundle",
+    "name": "sebk/openswoole-bundle",
     "type": "library",
     "description": "Swoole Symfony Bundle",
     "keywords": [

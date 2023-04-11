@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\WorkerHandler;
+namespace OpenSwooleBundle\Server\WorkerHandler;
 
 use Swoole\Server;
 

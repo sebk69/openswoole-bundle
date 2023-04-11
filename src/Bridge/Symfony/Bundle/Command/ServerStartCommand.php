@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace OpenSwooleBundle\Bridge\Symfony\Bundle\Command;
 
-use K911\Swoole\Bridge\Symfony\Bundle\Exception\CouldNotCreatePidFileException;
-use K911\Swoole\Bridge\Symfony\Bundle\Exception\PidFileNotAccessibleException;
-use function K911\Swoole\get_object_property;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use OpenSwooleBundle\Bridge\Symfony\Bundle\Exception\CouldNotCreatePidFileException;
+use OpenSwooleBundle\Bridge\Symfony\Bundle\Exception\PidFileNotAccessibleException;
+use OpenSwooleBundle\Server\HttpServer;
+use OpenSwooleBundle\Server\HttpServerConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\ConsoleOutput;
@@ -64,7 +63,7 @@ final class ServerStartCommand extends AbstractServerStartCommand
 
     private function closeSymfonyStyle(SymfonyStyle $io): void
     {
-        $output = get_object_property($io, 'output', OutputStyle::class);
+        $output = \OpenSwooleBundle\get_object_property($io, 'output', OutputStyle::class);
         if ($output instanceof ConsoleOutput) {
             $this->closeConsoleOutput($output);
         } elseif ($output instanceof StreamOutput) {

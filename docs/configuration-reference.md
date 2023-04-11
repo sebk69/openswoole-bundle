@@ -35,7 +35,7 @@ swoole:
         # strategy can be one of: (default) auto, off, advanced, default
         #   - off: turn off feature
         #   - auto: use 'advanced' when debug enabled or not production environment
-        #   - advanced: use request handler class \K911\Swoole\Server\RequestHandler\AdvancedStaticFilesServer
+        #   - advanced: use request handler class \OpenSwooleBundle\Server\RequestHandler\AdvancedStaticFilesServer
         #   - default: use default swoole static serving (faster than advanced, but supports less content types)
         # ---
         # mime types registration by file extension for static files serving in format: 'file extension': 'mime type'
@@ -66,19 +66,11 @@ swoole:
         # additional swoole symfony bundle services
         services:
 
-            # see: \K911\Swoole\Bridge\Symfony\HttpFoundation\TrustAllProxiesRequestHandler
+            # see: \OpenSwooleBundle\Bridge\Symfony\HttpFoundation\TrustAllProxiesRequestHandler
             trust_all_proxies_handler: true
 
-            # see: \K911\Swoole\Bridge\Symfony\HttpFoundation\CloudFrontRequestFactory
+            # see: \OpenSwooleBundle\Bridge\Symfony\HttpFoundation\CloudFrontRequestFactory
             cloudfront_proto_header_handler: true
-
-            # see: \K911\Swoole\Bridge\Upscale\Blackfire\WithProfiler
-            blackfire_profiler: false
-
-            # see: \K911\Swoole\Bridge\Tideways\Apm\WithApm
-            tideways_apm:
-                enabled: true
-                service_name: 'app_name' # service name for Tideways APM UI
 
         # swoole http server settings
         # see https://www.swoole.co.uk/docs/modules/swoole-server/configuration

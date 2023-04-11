@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\TestBundle\ExceptionHandler;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony\TestBundle\ExceptionHandler;
 
-use K911\Swoole\Client\Http;
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
+use OpenSwooleBundle\Client\Http;
+use OpenSwooleBundle\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Throwable;

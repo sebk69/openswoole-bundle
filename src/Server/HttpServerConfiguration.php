@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server;
+namespace OpenSwooleBundle\Server;
 
 use Assert\Assertion;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Config\Sockets;
+use OpenSwooleBundle\Server\Config\Socket;
+use OpenSwooleBundle\Server\Config\Sockets;
 
 /**
  * @todo Create interface and split this class

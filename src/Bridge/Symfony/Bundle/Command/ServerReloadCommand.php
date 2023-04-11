@@ -2,18 +2,17 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace OpenSwooleBundle\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use OpenSwooleBundle\Server\HttpServer;
+use OpenSwooleBundle\Server\HttpServerConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Throwable;
 
 final class ServerReloadCommand extends Command
 {
@@ -61,7 +60,7 @@ final class ServerReloadCommand extends Command
 
         try {
             $this->server->reload();
-        } catch (Throwable $ex) {
+        } catch (\Throwable $ex) {
             $io->error($ex->getMessage());
             exit(1);
         }

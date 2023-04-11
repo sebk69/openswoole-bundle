@@ -2,42 +2,34 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\DependencyInjection;
+namespace OpenSwooleBundle\Bridge\Symfony\Bundle\DependencyInjection;
 
-use K911\Swoole\Bridge\Symfony\ErrorHandler\ErrorResponder;
-use K911\Swoole\Bridge\Symfony\ErrorHandler\ExceptionHandlerFactory;
-use K911\Swoole\Bridge\Symfony\ErrorHandler\SymfonyExceptionHandler;
-use K911\Swoole\Bridge\Symfony\ErrorHandler\ThrowableHandlerFactory;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\CloudFrontRequestFactory;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\TrustAllProxiesRequestHandler;
-use K911\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskTransportFactory;
-use K911\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskTransportHandler;
-use K911\Swoole\Bridge\Tideways\Apm\Apm;
-use K911\Swoole\Bridge\Tideways\Apm\RequestDataProvider;
-use K911\Swoole\Bridge\Tideways\Apm\RequestProfiler;
-use K911\Swoole\Bridge\Tideways\Apm\TidewaysMiddlewareFactory;
-use K911\Swoole\Bridge\Tideways\Apm\WithApm;
-use K911\Swoole\Bridge\Upscale\Blackfire\WithProfiler;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Config\Sockets;
-use K911\Swoole\Server\Configurator\ConfiguratorInterface;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\Middleware\MiddlewareInjector;
-use K911\Swoole\Server\RequestHandler\AdvancedStaticFilesServer;
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\JsonExceptionHandler;
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\ProductionExceptionHandler;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
-use K911\Swoole\Server\Runtime\BootableInterface;
-use K911\Swoole\Server\Runtime\HMR\HotModuleReloaderInterface;
-use K911\Swoole\Server\Runtime\HMR\InotifyHMR;
-use K911\Swoole\Server\TaskHandler\TaskHandlerInterface;
-use K911\Swoole\Server\WorkerHandler\HMRWorkerStartHandler;
-use K911\Swoole\Server\WorkerHandler\WorkerStartHandlerInterface;
-use ReflectionMethod;
-use RuntimeException;
+use OpenSwooleBundle\Bridge\Symfony\ErrorHandler\ErrorResponder;
+use OpenSwooleBundle\Bridge\Symfony\ErrorHandler\ExceptionHandlerFactory;
+use OpenSwooleBundle\Bridge\Symfony\ErrorHandler\SymfonyExceptionHandler;
+use OpenSwooleBundle\Bridge\Symfony\ErrorHandler\ThrowableHandlerFactory;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\CloudFrontRequestFactory;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\TrustAllProxiesRequestHandler;
+use OpenSwooleBundle\Bridge\Symfony\Messenger\SwooleServerTaskTransportFactory;
+use OpenSwooleBundle\Bridge\Symfony\Messenger\SwooleServerTaskTransportHandler;
+use OpenSwooleBundle\Server\Config\Socket;
+use OpenSwooleBundle\Server\Config\Sockets;
+use OpenSwooleBundle\Server\Configurator\ConfiguratorInterface;
+use OpenSwooleBundle\Server\HttpServer;
+use OpenSwooleBundle\Server\HttpServerConfiguration;
+use OpenSwooleBundle\Server\RequestHandler\AdvancedStaticFilesServer;
+use OpenSwooleBundle\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
+use OpenSwooleBundle\Server\RequestHandler\ExceptionHandler\JsonExceptionHandler;
+use OpenSwooleBundle\Server\RequestHandler\ExceptionHandler\ProductionExceptionHandler;
+use OpenSwooleBundle\Server\RequestHandler\RequestHandlerInterface;
+use OpenSwooleBundle\Server\Runtime\BootableInterface;
+use OpenSwooleBundle\Server\Runtime\HMR\HotModuleReloaderInterface;
+use OpenSwooleBundle\Server\Runtime\HMR\InotifyHMR;
+use OpenSwooleBundle\Server\Session\Exception\RuntimeException;
+use OpenSwooleBundle\Server\TaskHandler\TaskHandlerInterface;
+use OpenSwooleBundle\Server\WorkerHandler\HMRWorkerStartHandler;
+use OpenSwooleBundle\Server\WorkerHandler\WorkerStartHandlerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -48,8 +40,6 @@ use Symfony\Component\ErrorHandler\ErrorHandler;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
-use Tideways\Profiler as TidewaysProfiler;
-use Upscale\Swoole\Blackfire\Profiler as BlackfireProfiler;
 
 final class SwooleExtension extends Extension implements PrependExtensionInterface
 {
@@ -295,72 +285,6 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
                 ->setDecoratedService(RequestHandlerInterface::class, null, -10)
             ;
         }
-
-        if ($config['blackfire_profiler'] || (null === $config['blackfire_profiler'] && \class_exists(BlackfireProfiler::class))) {
-            $container->register(BlackfireProfiler::class)
-                ->setClass(BlackfireProfiler::class)
-            ;
-
-            $container->register(WithProfiler::class)
-                ->setClass(WithProfiler::class)
-                ->setAutowired(false)
-                ->setAutoconfigured(false)
-                ->setPublic(false)
-                ->addArgument(new Reference(BlackfireProfiler::class))
-            ;
-            $def = $container->getDefinition('swoole_bundle.server.http_server.configurator.for_server_run_command');
-            $def->addArgument(new Reference(WithProfiler::class));
-            $def = $container->getDefinition('swoole_bundle.server.http_server.configurator.for_server_start_command');
-            $def->addArgument(new Reference(WithProfiler::class));
-        }
-
-        if ($config['tideways_apm']['enabled'] && \class_exists(TidewaysProfiler::class)) {
-            $container->register(RequestDataProvider::class)
-                ->setClass(RequestDataProvider::class)
-                ->setAutowired(false)
-                ->setAutoconfigured(false)
-                ->setPublic(false)
-                ->setArgument('$requestFactory', new Reference(RequestFactoryInterface::class))
-            ;
-
-            $container->register(RequestProfiler::class)
-                ->setClass(RequestProfiler::class)
-                ->setAutowired(false)
-                ->setAutoconfigured(false)
-                ->setPublic(false)
-                ->setArgument('$dataProvider', new Reference(RequestDataProvider::class))
-                ->setArgument('$serviceName', $config['tideways_apm']['service_name'])
-            ;
-
-            $container->register(TidewaysMiddlewareFactory::class)
-                ->setClass(TidewaysMiddlewareFactory::class)
-                ->setAutowired(false)
-                ->setAutoconfigured(false)
-                ->setPublic(false)
-                ->setArgument('$profiler', new Reference(RequestProfiler::class))
-            ;
-
-            $container->register(Apm::class)
-                ->setClass(Apm::class)
-                ->setAutowired(false)
-                ->setAutoconfigured(false)
-                ->setPublic(false)
-                ->setArgument('$injector', new Reference(MiddlewareInjector::class))
-                ->setArgument('$middlewareFactory', new Reference(TidewaysMiddlewareFactory::class))
-            ;
-
-            $container->register(WithApm::class)
-                ->setClass(WithApm::class)
-                ->setAutowired(false)
-                ->setAutoconfigured(false)
-                ->setPublic(false)
-                ->setArgument('$apm', new Reference(Apm::class))
-            ;
-            $def = $container->getDefinition('swoole_bundle.server.http_server.configurator.for_server_run_command');
-            $def->addArgument(new Reference(WithApm::class));
-            $def = $container->getDefinition('swoole_bundle.server.http_server.configurator.for_server_start_command');
-            $def->addArgument(new Reference(WithApm::class));
-        }
     }
 
     private function registerSymfonyExceptionHandler(ContainerBuilder $container): void
@@ -375,7 +299,7 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         $container->register(ThrowableHandlerFactory::class)
             ->setPublic(false)
         ;
-        $container->register('swoole_bundle.error_handler.symfony_kernel_throwable_handler', ReflectionMethod::class)
+        $container->register('swoole_bundle.error_handler.symfony_kernel_throwable_handler', \ReflectionMethod::class)
             ->setFactory([ThrowableHandlerFactory::class, 'newThrowableHandler'])
             ->setPublic(false)
         ;
@@ -396,17 +320,6 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
             ->setAutoconfigured(true)
             ->setPublic(false)
         ;
-    }
-
-    private function isBundleLoaded(ContainerBuilder $container, string $bundleName): bool
-    {
-        /** @var array<string,string> */
-        $bundles = $container->getParameter('kernel.bundles');
-
-        $bundleNameOnly = \str_replace('bundle', '', \mb_strtolower($bundleName));
-        $fullBundleName = \ucfirst($bundleNameOnly).'Bundle';
-
-        return isset($bundles[$fullBundleName]);
     }
 
     private function isProd(ContainerBuilder $container): bool

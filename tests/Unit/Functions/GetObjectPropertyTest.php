@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Functions;
+namespace OpenSwooleBundle\Tests\Unit\Functions;
 
-use function K911\Swoole\get_object_property;
+use function OpenSwooleBundle\get_object_property;
 use PHPUnit\Framework\TestCase;
 
 class GetObjectPropertyTest extends TestCase

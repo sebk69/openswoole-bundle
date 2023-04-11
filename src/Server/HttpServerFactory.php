@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server;
+namespace OpenSwooleBundle\Server;
 
 use Assert\Assertion;
-use K911\Swoole\Server\Config\Socket;
+use OpenSwooleBundle\Server\Config\Socket;
 use Swoole\Http\Server;
 
 final class HttpServerFactory

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony\TestBundle\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +17,7 @@ final class SymfonyHttpController
      *     path="/http/request/uri"
      * )
      *
-     * @see \K911\Swoole\Tests\Feature\SymfonyHttpRequestContainsRequestUriTest::testWhetherCurrentSymfonyHttpRequestContainsRequestUri()
+     * @see \OpenSwooleBundle\Tests\Feature\SymfonyHttpRequestContainsRequestUriTest::testWhetherCurrentSymfonyHttpRequestContainsRequestUri()
      */
     public function getRequestUri(Request $currentRequest): JsonResponse
     {

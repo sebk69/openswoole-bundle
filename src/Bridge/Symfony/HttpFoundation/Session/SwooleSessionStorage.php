@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\HttpFoundation\Session;
+namespace OpenSwooleBundle\Bridge\Symfony\HttpFoundation\Session;
 
 use Assert\Assertion;
-use K911\Swoole\Server\Session\Exception\LogicException;
-use K911\Swoole\Server\Session\Exception\RuntimeException;
-use K911\Swoole\Server\Session\StorageInterface;
+use OpenSwooleBundle\Server\Session\Exception\LogicException;
+use OpenSwooleBundle\Server\Session\Exception\RuntimeException;
+use OpenSwooleBundle\Server\Session\StorageInterface;
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
@@ -76,6 +76,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
      * {@inheritdoc}
      *
      * @throws \Exception
+     *
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
     public function regenerate(bool $destroy = false, int $lifetime = null): bool

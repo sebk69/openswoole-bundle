@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Feature;
+namespace OpenSwooleBundle\Tests\Feature;
 
-use K911\Swoole\Client\Http;
-use K911\Swoole\Client\HttpClient;
-use K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
+use OpenSwooleBundle\Client\Http;
+use OpenSwooleBundle\Client\HttpClient;
+use OpenSwooleBundle\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
 use Swoole\Coroutine;
 
 final class SwooleServerReloadViaHttpApiTest extends ServerTestCase

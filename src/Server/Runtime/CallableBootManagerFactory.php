@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Runtime;
+namespace OpenSwooleBundle\Server\Runtime;
 
 use Assert\Assertion;
-use K911\Swoole\Component\GeneratedCollection;
+use OpenSwooleBundle\Component\GeneratedCollection;
 
 final class CallableBootManagerFactory
 {
@@ -16,7 +16,7 @@ final class CallableBootManagerFactory
             $result = !isset($objectRegistry[$id]);
             $objectRegistry[$id] = true;
 
-            return $result; /* @phpstan-ignore-line */
+            return $result;
         };
 
         return new CallableBootManager(

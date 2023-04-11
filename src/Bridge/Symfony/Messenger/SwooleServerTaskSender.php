@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Messenger;
+namespace OpenSwooleBundle\Bridge\Symfony\Messenger;
 
-use K911\Swoole\Server\HttpServer;
+use OpenSwooleBundle\Server\HttpServer;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 use Symfony\Component\Messenger\Stamp\SentStamp;

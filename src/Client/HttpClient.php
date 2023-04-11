@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Client;
+namespace OpenSwooleBundle\Client;
 
-use K911\Swoole\Client\Exception\ClientConnectionErrorException;
-use K911\Swoole\Client\Exception\MissingContentTypeException;
-use K911\Swoole\Client\Exception\UnsupportedContentTypeException;
-use K911\Swoole\Client\Exception\UnsupportedHttpMethodException;
-use K911\Swoole\Server\Config\Socket;
+use OpenSwooleBundle\Client\Exception\ClientConnectionErrorException;
+use OpenSwooleBundle\Client\Exception\MissingContentTypeException;
+use OpenSwooleBundle\Client\Exception\UnsupportedContentTypeException;
+use OpenSwooleBundle\Client\Exception\UnsupportedHttpMethodException;
+use OpenSwooleBundle\Server\Config\Socket;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Http\Client;
 

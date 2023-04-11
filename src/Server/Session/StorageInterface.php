@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Session;
+namespace OpenSwooleBundle\Server\Session;
 
 interface StorageInterface
 {

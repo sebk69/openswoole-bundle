@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace OpenSwooleBundle\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Server\Configurator\WithRequestHandler;
-use K911\Swoole\Tests\Unit\Server\RequestHandler\RequestHandlerDummy;
-use K911\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
+use OpenSwooleBundle\Server\Configurator\WithRequestHandler;
+use OpenSwooleBundle\Tests\Unit\Server\RequestHandler\RequestHandlerDummy;
+use OpenSwooleBundle\Tests\Unit\Server\SwooleHttpServerMock;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\ErrorHandler;
+namespace OpenSwooleBundle\Bridge\Symfony\ErrorHandler;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
+use OpenSwooleBundle\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\TerminableInterface;
-use Throwable;
 
 final class SymfonyExceptionHandler implements ExceptionHandlerInterface
 {
@@ -47,7 +46,7 @@ final class SymfonyExceptionHandler implements ExceptionHandlerInterface
         $this->errorResponder = $errorResponder;
     }
 
-    public function handle(Request $request, Throwable $exception, Response $response): void
+    public function handle(Request $request, \Throwable $exception, Response $response): void
     {
         $httpFoundationRequest = $this->requestFactory->make($request);
         $httpFoundationResponse = $this->errorResponder->processErroredRequest($httpFoundationRequest, $exception);

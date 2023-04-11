@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Functions;
+namespace OpenSwooleBundle\Tests\Unit\Functions;
 
-use function K911\Swoole\decode_string_as_set;
 use PHPUnit\Framework\TestCase;
 
 class DecodeStringAsSetTest extends TestCase
@@ -46,6 +45,6 @@ class DecodeStringAsSetTest extends TestCase
      */
     public function testDecodeStringAsSet(?string $string, array $set): void
     {
-        self::assertSame($set, decode_string_as_set($string));
+        self::assertSame($set, \OpenSwooleBundle\decode_string_as_set($string));
     }
 }

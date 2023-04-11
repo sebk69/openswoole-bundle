@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace OpenSwooleBundle\Server\Configurator;
 
-use K911\Swoole\Server\WorkerHandler\WorkerStartHandlerInterface;
+use OpenSwooleBundle\Server\WorkerHandler\WorkerStartHandlerInterface;
 use Swoole\Http\Server;
 
 final class WithWorkerStartHandler implements ConfiguratorInterface

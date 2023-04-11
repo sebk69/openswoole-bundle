@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace OpenSwooleBundle\Server\Configurator;
 
-use K911\Swoole\Server\HttpServerConfiguration;
+use OpenSwooleBundle\Server\HttpServerConfiguration;
 use Swoole\Http\Server;
 
 final class WithHttpServerConfiguration implements ConfiguratorInterface

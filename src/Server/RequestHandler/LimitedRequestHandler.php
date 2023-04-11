@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\RequestHandler;
+namespace OpenSwooleBundle\Server\RequestHandler;
 
 use InvalidArgumentException;
-use K911\Swoole\Component\AtomicCounter;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use OpenSwooleBundle\Component\AtomicCounter;
+use OpenSwooleBundle\Server\HttpServer;
+use OpenSwooleBundle\Server\Runtime\BootableInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Symfony\Component\Console\Style\SymfonyStyle;

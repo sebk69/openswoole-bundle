@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\HttpKernel;
+namespace OpenSwooleBundle\Bridge\Symfony\HttpKernel;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInjectorInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\ResponseProcessorInjectorInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
+use OpenSwooleBundle\Server\RequestHandler\RequestHandlerInterface;
+use OpenSwooleBundle\Server\Runtime\BootableInterface;
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 use Symfony\Component\HttpKernel\KernelInterface;

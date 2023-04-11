@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle;
 
-use K911\Swoole\Server\LifecycleHandler\ServerManagerStartHandlerInterface;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
+use OpenSwooleBundle\Server\LifecycleHandler\ServerManagerStartHandlerInterface;
+use OpenSwooleBundle\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
 use Swoole\Server;
 
 final class CoverageStartOnServerManagerStart implements ServerManagerStartHandlerInterface

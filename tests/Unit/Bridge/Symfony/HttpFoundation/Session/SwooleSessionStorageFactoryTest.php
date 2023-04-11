@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Symfony\HttpFoundation\Session;
+namespace OpenSwooleBundle\Tests\Unit\Bridge\Symfony\HttpFoundation\Session;
 
-use K911\Swoole\Bridge\Symfony\Event\SessionResetEvent;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\Session\SwooleSessionStorage;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\Session\SwooleSessionStorageFactory;
-use K911\Swoole\Server\Session\StorageInterface;
+use OpenSwooleBundle\Bridge\Symfony\Event\SessionResetEvent;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\Session\SwooleSessionStorage;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\Session\SwooleSessionStorageFactory;
+use OpenSwooleBundle\Server\Session\StorageInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;

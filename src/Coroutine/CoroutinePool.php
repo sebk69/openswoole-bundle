@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Coroutine;
+namespace OpenSwooleBundle\Coroutine;
 
 use Assert\Assertion;
 use Swoole\Coroutine;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony;
 
 use Exception;
 use Generator;
-use K911\Swoole\Bridge\Symfony\Bundle\SwooleBundle;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\CoverageBundle;
-use K911\Swoole\Tests\Fixtures\Symfony\TestBundle\TestBundle;
+use OpenSwooleBundle\Bridge\Symfony\Bundle\SwooleBundle;
+use OpenSwooleBundle\Tests\Fixtures\Symfony\CoverageBundle\CoverageBundle;
+use OpenSwooleBundle\Tests\Fixtures\Symfony\TestBundle\TestBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\MonologBundle\MonologBundle;

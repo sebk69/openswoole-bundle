@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony;
 
 use Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache;
 

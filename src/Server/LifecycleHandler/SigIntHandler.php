@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\LifecycleHandler;
+namespace OpenSwooleBundle\Server\LifecycleHandler;
 
 use Swoole\Process;
 use Swoole\Server;

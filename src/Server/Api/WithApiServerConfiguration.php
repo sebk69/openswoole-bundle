@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Api;
+namespace OpenSwooleBundle\Server\Api;
 
-use K911\Swoole\Server\Config\Sockets;
-use K911\Swoole\Server\Configurator\ConfiguratorInterface;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use OpenSwooleBundle\Server\Config\Sockets;
+use OpenSwooleBundle\Server\Configurator\ConfiguratorInterface;
+use OpenSwooleBundle\Server\RequestHandler\RequestHandlerInterface;
 use Swoole\Http\Server;
 
 /**

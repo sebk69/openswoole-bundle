@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Middleware;
+namespace OpenSwooleBundle\Server\Middleware;
 
 interface MiddlewareFactory
 {

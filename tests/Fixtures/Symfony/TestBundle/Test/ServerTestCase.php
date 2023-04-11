@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Test;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony\TestBundle\Test;
 
-use K911\Swoole\Client\HttpClient;
-use K911\Swoole\Coroutine\CoroutinePool;
-use K911\Swoole\Tests\Fixtures\Symfony\TestAppKernel;
+use OpenSwooleBundle\Client\HttpClient;
+use OpenSwooleBundle\Coroutine\CoroutinePool;
+use OpenSwooleBundle\Tests\Fixtures\Symfony\TestAppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\HttpKernel\Kernel;

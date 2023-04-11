@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Api;
+namespace OpenSwooleBundle\Server\Api;
 
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use OpenSwooleBundle\Server\HttpServer;
+use OpenSwooleBundle\Server\HttpServerConfiguration;
 use Swoole\Server\Port;
 
 /**

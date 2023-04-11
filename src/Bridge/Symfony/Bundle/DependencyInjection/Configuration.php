@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\DependencyInjection;
+namespace OpenSwooleBundle\Bridge\Symfony\Bundle\DependencyInjection;
 
-use function K911\Swoole\decode_string_as_set;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
@@ -48,7 +47,7 @@ final class Configuration implements ConfigurationInterface
                             ->prototype('scalar')->end()
                             ->beforeNormalization()
                                 ->ifString()
-                                ->then(fn ($v): array => decode_string_as_set($v))
+                                ->then(fn ($v): array => \OpenSwooleBundle\decode_string_as_set($v))
                             ->end()
                         ->end()
                         ->arrayNode('trusted_proxies')

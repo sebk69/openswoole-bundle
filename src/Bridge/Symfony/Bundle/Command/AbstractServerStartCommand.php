@@ -2,19 +2,16 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace OpenSwooleBundle\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
-use K911\Swoole\Common\XdebugHandler\XdebugHandler;
-use function K911\Swoole\decode_string_as_set;
-use function K911\Swoole\format_bytes;
-use function K911\Swoole\get_max_memory;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Configurator\ConfiguratorInterface;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\HttpServerFactory;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use OpenSwooleBundle\Common\XdebugHandler\XdebugHandler;
+use OpenSwooleBundle\Server\Config\Socket;
+use OpenSwooleBundle\Server\Configurator\ConfiguratorInterface;
+use OpenSwooleBundle\Server\HttpServer;
+use OpenSwooleBundle\Server\HttpServerConfiguration;
+use OpenSwooleBundle\Server\HttpServerFactory;
+use OpenSwooleBundle\Server\Runtime\BootableInterface;
 use Swoole\Http\Server;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -109,7 +106,7 @@ abstract class AbstractServerStartCommand extends Command
         $this->server->attach($swooleServer);
 
         // TODO: Lock server configuration here
-//        $this->serverConfiguration->lock();
+        //        $this->serverConfiguration->lock();
 
         $runtimeConfiguration = ['symfonyStyle' => $io] + $this->prepareRuntimeConfiguration($this->serverConfiguration, $input);
         $this->bootManager->boot($runtimeConfiguration);
@@ -204,7 +201,7 @@ abstract class AbstractServerStartCommand extends Command
             ['reactor_count', $serverConfiguration->getReactorCount()],
             ['worker_max_request', $serverConfiguration->getMaxRequest()],
             ['worker_max_request_grace', $serverConfiguration->getMaxRequestGrace()],
-            ['memory_limit', format_bytes(get_max_memory())],
+            ['memory_limit', \OpenSwooleBundle\format_bytes(\OpenSwooleBundle\get_max_memory())],
             ['trusted_hosts', \implode(', ', $runtimeConfiguration['trustedHosts'])],
         ];
 
@@ -302,13 +299,13 @@ abstract class AbstractServerStartCommand extends Command
     private function decodeSet($set): array
     {
         if (\is_string($set)) {
-            return decode_string_as_set($set);
+            return \OpenSwooleBundle\decode_string_as_set($set);
         }
 
         Assertion::isArray($set);
 
         if (1 === \count($set)) {
-            return decode_string_as_set($set[0]);
+            return \OpenSwooleBundle\decode_string_as_set($set[0]);
         }
 
         return $set;

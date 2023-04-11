@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\RequestHandler;
+namespace OpenSwooleBundle\Tests\Unit\Server\RequestHandler;
 
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use OpenSwooleBundle\Server\RequestHandler\RequestHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 

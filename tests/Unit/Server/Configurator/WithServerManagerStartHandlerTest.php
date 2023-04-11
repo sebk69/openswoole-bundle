@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace OpenSwooleBundle\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Server\Configurator\WithServerManagerStartHandler;
-use K911\Swoole\Server\LifecycleHandler\NoOpServerManagerStartHandler;
-use K911\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
+use OpenSwooleBundle\Server\Configurator\WithServerManagerStartHandler;
+use OpenSwooleBundle\Server\LifecycleHandler\NoOpServerManagerStartHandler;
+use OpenSwooleBundle\Tests\Unit\Server\SwooleHttpServerMock;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Symfony\HttpFoundation;
+namespace OpenSwooleBundle\Tests\Unit\Bridge\Symfony\HttpFoundation;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseHeadersAndStatusProcessor;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\ResponseHeadersAndStatusProcessor;
+use OpenSwooleBundle\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server;
+namespace OpenSwooleBundle\Server;
 
-use K911\Swoole\Server\Exception\IllegalInitializationException;
-use K911\Swoole\Server\Exception\NotRunningException;
-use K911\Swoole\Server\Exception\PortUnavailableException;
-use K911\Swoole\Server\Exception\UnexpectedPortException;
-use K911\Swoole\Server\Exception\UninitializedException;
+use OpenSwooleBundle\Server\Exception\IllegalInitializationException;
+use OpenSwooleBundle\Server\Exception\NotRunningException;
+use OpenSwooleBundle\Server\Exception\PortUnavailableException;
+use OpenSwooleBundle\Server\Exception\UnexpectedPortException;
+use OpenSwooleBundle\Server\Exception\UninitializedException;
 use Swoole\Http\Server;
 use Swoole\Process;
 use Swoole\Server\Port as Listener;
@@ -140,7 +140,7 @@ final class HttpServer
     {
         try {
             return Process::kill($this->configuration->getPid(), 0);
-        } catch (Throwable $ex) {
+        } catch (\Throwable $ex) {
             return false;
         }
     }

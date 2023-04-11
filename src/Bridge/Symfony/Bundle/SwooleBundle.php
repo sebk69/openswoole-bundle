@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle;
+namespace OpenSwooleBundle\Bridge\Symfony\Bundle;
 
-use K911\Swoole\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\DebugLogProcessorPass;
-use K911\Swoole\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\SessionStorageListenerPass;
-use K911\Swoole\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\StreamedResponseListenerPass;
+use OpenSwooleBundle\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\DebugLogProcessorPass;
+use OpenSwooleBundle\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\SessionStorageListenerPass;
+use OpenSwooleBundle\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\StreamedResponseListenerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

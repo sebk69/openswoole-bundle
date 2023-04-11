@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace OpenSwooleBundle\Server\Configurator;
 
 use Assert\Assertion;
-use K911\Swoole\Component\GeneratedCollection;
+use OpenSwooleBundle\Component\GeneratedCollection;
 
 final class CallableChainConfiguratorFactory
 {

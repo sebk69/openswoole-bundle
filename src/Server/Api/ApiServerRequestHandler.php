@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Api;
+namespace OpenSwooleBundle\Server\Api;
 
-use K911\Swoole\Client\Http;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use OpenSwooleBundle\Client\Http;
+use OpenSwooleBundle\Server\RequestHandler\RequestHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Throwable;

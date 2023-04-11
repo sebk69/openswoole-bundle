@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\RequestHandler;
+namespace OpenSwooleBundle\Tests\Fixtures\Symfony\CoverageBundle\RequestHandler;
 
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
+use OpenSwooleBundle\Server\RequestHandler\RequestHandlerInterface;
+use OpenSwooleBundle\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 

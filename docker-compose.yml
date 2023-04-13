@@ -6,7 +6,7 @@ services:
     build:
       context: .
       args:
-        - OPENSWOOLE_VERSION=22.0.0
+        - OPENSWOOLE_VERSION=22.0
         - PHP_VERSION=8.1
         - COMPOSER_VERSION=2.5.5
     volumes:

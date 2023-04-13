@@ -321,7 +321,7 @@ class HttpServerConfiguration
     private function initializeSettings(array $init): void
     {
         $this->settings = [];
-        $cpuCores = \swoole_cpu_num();
+        $cpuCores = static::cpuNum();
 
         if (!isset($init[self::SWOOLE_HTTP_SERVER_CONFIG_REACTOR_COUNT])) {
             $init[self::SWOOLE_HTTP_SERVER_CONFIG_REACTOR_COUNT] = $cpuCores;
@@ -336,6 +336,13 @@ class HttpServerConfiguration
         }
 
         $this->setSettings($init);
+    }
+
+    public static function cpuNum(): int
+    {
+        $command = "cat /proc/cpuinfo | grep processor | wc -l";
+
+        return  (int) shell_exec($command);
     }
 
     /**

@@ -53,7 +53,7 @@ if (PHP_MAJOR_VERSION === 7) {
             parent::__construct('localhost', 31999);
         }
 
-        public function on(string $event, callable $callback): bool
+        public function on(mixed $event, callable $callback): bool
         {
             $this->registeredEvent = true;
             $this->registeredEventPair = [$event, $callback];

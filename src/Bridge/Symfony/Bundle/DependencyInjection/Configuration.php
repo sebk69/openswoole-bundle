@@ -55,7 +55,7 @@ final class Configuration implements ConfigurationInterface
                             ->prototype('scalar')->end()
                             ->beforeNormalization()
                                 ->ifString()
-                                ->then(fn ($v): array => decode_string_as_set($v))
+                                ->then(fn ($v): array => \OpenSwooleBundle\decode_string_as_set($v))
                             ->end()
                         ->end()
                         ->enumNode('running_mode')

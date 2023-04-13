@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker restart openswoole-bundle-test || docker-compose up -d --build --remove-orphans
+bin/phpstan --memory-limit=2G
+docker exec -it openswoole-bundle-test vendor/bin/phpunit --testdox tests

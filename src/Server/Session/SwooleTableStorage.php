@@ -98,11 +98,11 @@ final class SwooleTableStorage implements StorageInterface
      */
     public function get(string $key, ?callable $expired = null): ?string
     {
-        if (!$this->sharedMemory->exist($key)) {
+        if (!$this->sharedMemory->exists($key)) {
             return null;
         }
 
-        /** @var array{expires_at: int, data: string}&Table\Row $row */
+        /** @var array $row */
         $row = $this->sharedMemory->get($key);
 
         /** @var int $expiresAt */

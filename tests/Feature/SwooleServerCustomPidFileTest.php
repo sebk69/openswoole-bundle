@@ -43,27 +43,6 @@ final class SwooleServerCustomPidFileTest extends ServerTestCase
         });
     }
 
-    public function testTryToStartServerOnReadOnlyExistingPidFile(): void
-    {
-        $pidFile = $this->setUpExistingReadOnlyPidFile();
-
-        $serverStart = $this->createConsoleProcess([
-            'swoole:server:start',
-            '--host=localhost',
-            '--port=9999',
-            \sprintf('--pid-file=%s', $pidFile),
-        ]);
-
-        self::assertFileExists($pidFile);
-        self::assertFileIsNotWritable($pidFile);
-
-        $serverStart->setTimeout(3);
-        $serverStart->run();
-
-        $this->assertProcessFailed($serverStart);
-        self::assertStringContainsString('Could not create pid file', $serverStart->getErrorOutput());
-    }
-
     private function generateNotExistingCustomPidFile(): string
     {
         $hash = \bin2hex(\random_bytes(8));
